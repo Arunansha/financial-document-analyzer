@@ -1,65 +1,123 @@
-# financial-document-analyzer
-# 📊 Financial Document Analyzer (CrewAI Based System)
+# 📊 Financial Document Analyzer
 
 ## 📌 Project Overview
 
 The Financial Document Analyzer is an AI-powered system that processes corporate financial reports, earnings statements, and investment documents using CrewAI agents.
 
-The system extracts insights, summarizes financial data, and generates structured analysis outputs.
+The system extracts key financial insights, summarizes company performance, identifies risks, and generates structured analysis results.
 
-This project was debugged, optimized, and improved to ensure stable execution and clean architecture.
-
----
-
-# 🐞 Bugs Identified & Fixes Applied
-
-### 1️⃣ Large File Push Error (GitHub 100MB limit)
-**Issue:**
-The `venv/` folder was accidentally committed, causing:
-File size exceeded 100MB limit.
-
-**Fix:**
-- Removed `venv` from Git tracking
-- Deleted Git history
-- Added `.gitignore`
-- Reinitialized repository
+This submission includes fixed, working code with debugging improvements, structured setup instructions, and API documentation.
 
 ---
 
-### 2️⃣ Missing Dependencies Error
-**Issue:**
-Application crashed due to missing packages.
+# 🐞 Bugs Found & Fixes Applied
 
-**Fix:**
+## 1️⃣ Large File Upload Error (GitHub 100MB Limit)
+
+**Issue:**  
+The `venv/` folder was accidentally committed, which included a large file:
+`lancedb/_lancedb.pyd (147MB)`  
+This exceeded GitHub’s 100MB file size limit.
+
+**Fix:**  
+- Removed `venv/` from Git tracking  
+- Added `.gitignore` to prevent future tracking  
+- Cleaned Git history  
+- Reinitialized repository  
+- Pushed clean working code  
+
+---
+
+## 2️⃣ Missing Dependencies Issue
+
+**Issue:**  
+Application failed due to missing required packages.
+
+**Fix:**  
 - Generated `requirements.txt` using:
-  pip freeze > requirements.txt
-- Ensured all required libraries are listed
+- Ensured all required libraries are properly listed
 
 ---
 
-### 3️⃣ Environment Configuration Issues
-**Issue:**
-API keys not detected properly.
+## 3️⃣ Environment Variable Configuration Error
 
-**Fix:**
-- Added `.env` support
-- Used environment variables securely
+**Issue:**  
+API key was not properly loaded, causing runtime errors.
+
+**Fix:**  
+- Added `.env` configuration support  
+- Loaded environment variables securely  
+- Removed hardcoded keys  
 
 ---
 
 # 🏗️ System Architecture
 
-User Input → CrewAI Agents → Document Processing → Analysis Engine → Output Generation
+User Input  
+⬇  
+CrewAI Agents  
+⬇  
+Document Processing  
+⬇  
+Analysis Engine  
+⬇  
+Structured Output (JSON / Text Summary)
 
-Core Components:
-- Agent Manager (CrewAI)
-- Document Parser
-- Analysis Engine
+### Core Components:
+- CrewAI Agent Manager
+- Financial Analysis Agent
+- Risk Assessment Agent
+- Summary Generator Agent
 - Vector Storage (LanceDB)
-- Output Generator
 
 ---
 
 # ⚙️ Setup Instructions
 
 ## 1️⃣ Clone Repository
+
+## 2️⃣ Create Virtual Environment
+
+## 3️⃣ Activate Virtual Environment
+
+Windows:
+Mac/Linux:
+
+## 4️⃣ Install Dependencies
+
+## 5️⃣ Configure Environment Variables
+
+Create a `.env` file in the root directory:
+
+---
+
+# ▶️ Usage
+
+Run the application:
+
+Upload or provide a financial document for analysis.
+
+The system will:
+- Extract key metrics
+- Generate financial summary
+- Identify potential risks
+- Provide structured output
+
+---
+
+# 📡 API Documentation
+
+## Endpoint: Analyze Financial Document
+
+**Method:** POST  
+**Input:** Financial document (PDF/Text)  
+**Output:** JSON response  
+
+### Sample Response:
+
+```json
+{
+  "summary": "Revenue increased by 12% compared to last quarter.",
+  "risks": ["Rising operational costs"],
+  "recommendation": "Moderate investment potential"
+}
